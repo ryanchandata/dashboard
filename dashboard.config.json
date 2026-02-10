@@ -1,0 +1,19 @@
+{
+  "port": 8787,
+  "projects": [
+    {
+      "id": "doc-site",
+      "name": "Doc Site",
+      "dir": "../doc-site",
+      "start": "npm run build && npm run preview",
+      "port": 4173
+    },
+    {
+      "id": "wms-count",
+      "name": "WMS Count",
+      "dir": "../wms-count",
+      "start": "npm run build && npm run preview",
+      "port": 4174
+    }
+  ]
+}

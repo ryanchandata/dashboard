@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project Dashboard</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0f1115;
+        --card: #1b1f27;
+        --text: #e4e7ee;
+        --muted: #9aa4b2;
+        --accent: #4cc38a;
+        --danger: #f2707a;
+        --border: #2a2f3a;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        padding: 32px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+      }
+      .muted { color: var(--muted); }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 18px;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .pill {
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        border: 1px solid var(--border);
+      }
+      .pill.on { color: var(--accent); border-color: rgba(76,195,138,0.4); }
+      .pill.off { color: var(--danger); border-color: rgba(242,112,122,0.4); }
+      button {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 8px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      button.primary {
+        border-color: rgba(76,195,138,0.5);
+        color: var(--accent);
+      }
+      button.danger {
+        border-color: rgba(242,112,122,0.5);
+        color: var(--danger);
+      }
+      .link {
+        word-break: break-all;
+        color: var(--accent);
+        text-decoration: none;
+      }
+      .stack { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+      .controls { display: flex; gap: 8px; flex-wrap: wrap; }
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0,0,0,0.6);
+        padding: 24px;
+      }
+      .modal.active { display: flex; }
+      .modal-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        width: min(900px, 95vw);
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .modal-body {
+        padding: 12px 16px;
+        overflow: auto;
+        white-space: pre-wrap;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 12px;
+        color: #d2d6df;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Project Dashboard</h1>
+    <div class="muted">Local control server · start/stop apps + trycloudflare tunnels</div>
+
+    <div id="grid" class="grid"></div>
+
+    <div id="logModal" class="modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div id="logTitle" style="font-weight:600;">Logs</div>
+          <button data-action="close-modal">Close</button>
+        </div>
+        <div id="logBody" class="modal-body"></div>
+      </div>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
